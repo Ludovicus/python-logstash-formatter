@@ -29,11 +29,15 @@ class LogstashFormatter(logging.Formatter):
     """
 
     def __init__(self,
+                 fmt=None, 
+                 datefmt=None
                  source_host=None,
                  extra={},
                  json_cls=None,
                  json_default=_default_json_default):
         """
+        :param fmt: message format (Ignored by this formatter) 
+        :param datefmt: date format (Ignored by this formatter)
         :param source_host: override source host name
         :param extra: provide extra fields always present in logs
         :param json_cls: JSON encoder to forward to json.dumps
