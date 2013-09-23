@@ -30,7 +30,7 @@ class LogstashFormatter(logging.Formatter):
 
     def __init__(self,
                  fmt=None, 
-                 datefmt=None
+                 datefmt=None,
                  source_host=None,
                  extra={},
                  json_cls=None,
