@@ -69,11 +69,16 @@ class LogstashFormatter(logging.Formatter):
             fields.update(record.msg)
             fields.pop('msg')
             msg = ""
+        elif hasattr(record.msg,"__str__") and callable(getattr(record.msg,"__str__")):
+            msg = str(record.msg)
         else:
             msg = record.getMessage()
 
         if 'msg' in fields:
             fields.pop('msg')
+
+        if hasattr(record.msg,"to_dict") and callable(getattr(record.msg,"to_dict")):
+            fields.update(record.msg.to_dict())
 
         if 'exc_info' in fields:
             if fields['exc_info']:

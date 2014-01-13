@@ -55,6 +55,11 @@ and if an exception is found on the stack, its traceback will be attached to the
     except:
       logger.info("something unexpected happened", exc_info=True)
 
+If an object is passed the formatter and it supports the __str__ method, then it will be cast to a string
+and used as the message.  If the object supports the to_dict method, then it will be called and used to supply
+extra fields.  If the named argument ``extra`` is also supplied, the fields in the object dictionary will
+take precedence.
+
 Sample output
 -------------
 

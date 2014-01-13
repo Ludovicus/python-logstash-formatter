@@ -7,7 +7,7 @@ def read(*parts):
                        encoding="utf-8").read()
 
 setup(name='logstash_formatter',
-      version='0.5.5',
+      version='0.5.6',
       description='JSON formatter meant for logstash',
       long_description=read('README.rst'),
       url='https://github.com/exoscale/python-logstash-formatter',
@@ -22,6 +22,6 @@ setup(name='logstash_formatter',
           'License :: OSI Approved :: MIT License',
           'Natural Language :: English',
           'Programming Language :: Python',
-          'Programming Language :: Python :: 3'
+          'Programming Language :: Python :: 2'
       ],
       zip_safe=False)
