@@ -97,8 +97,11 @@ class LogstashFormatter(logging.Formatter):
 
         logr = self.defaults.copy()
 
+        # Logstash is using JODA for parsing DateTime, and only accepts milliseconds.
+        now = datetime.datetime.utcnow()
+        ts = now.strftime('%Y-%m-%dT%H:%M:%S.') + (now.strftime('%f')[:3]) + 'Z'
         logr.update({'@message': msg,
-                     '@timestamp': datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S.%fZ'),
+                     '@timestamp': ts,
                      '@source_host': self.source_host,
                      '@fields': self._build_fields(logr, fields)})
 
